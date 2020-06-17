@@ -1,0 +1,11 @@
+WEBPACK(imports/exports)
+    Babel
+    less
+    Eslint
+    2 modes:
+        - Dev(Dev server, source maps, Eslint, Not Minified JS & CSS
+        - Prod(Minified code)
+
+
+GIT
+
