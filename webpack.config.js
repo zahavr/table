@@ -7,7 +7,7 @@ const path = require('path'),
 const isProd = process.env.NODE_ENV === 'production',
     isDev = !isProd;
 
-const fileName = ext => isDev ? `bundle.${ext}` : `bundle.[hast].${ext}`;
+const fileName = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`;
 
 const jsLoaders = () => {
     const loaders = [
@@ -20,7 +20,7 @@ const jsLoaders = () => {
     ]
 
     if (isDev) {
-        loaders.push('eslint-loader')
+        // loaders.push('eslint-loader')
     }
 
     return loaders
@@ -65,7 +65,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.less$/,
+                test: /\.s[ac]ss$/i,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -75,13 +75,13 @@ module.exports = {
                         }
                     },
                     'css-loader',
-                    'less-loader'
+                    'sass-loader'
                 ]
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: jsLoader(),
+                use: jsLoaders(),
 
             }
         ],
